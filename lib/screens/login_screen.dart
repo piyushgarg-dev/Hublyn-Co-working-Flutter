@@ -11,31 +11,32 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  void signIn()async{
-
-    try{
+  void signIn() async {
+    try {
       final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
-      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
 
       final AuthCredential credential = GoogleAuthProvider.getCredential(
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
       );
       final _user = await _auth.signInWithCredential(credential);
-      Navigator.pushNamed(context, DashboardScreen.id);
-    }catch(e){print(e);}
-
+      if (_user != null) {
+        Navigator.pushNamed(context, DashboardScreen.id);
+      }
+    } catch (e) {
+      print(e);
+    }
   }
 
   @override
   void initState() {
     super.initState();
     signIn();
-
   }
 
   @override
