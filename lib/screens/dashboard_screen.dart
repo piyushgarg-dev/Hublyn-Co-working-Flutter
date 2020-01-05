@@ -51,8 +51,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Scaffold(
 //      TODO: Build Dashboard
+    body: Center(
+      child: Text('Hello $_displayName'),
+    ),
     );
   }
 }
