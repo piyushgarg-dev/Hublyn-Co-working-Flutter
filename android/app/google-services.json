@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "406953201883",
+    "firebase_url": "https://hublyn-89050.firebaseio.com",
+    "project_id": "hublyn-89050",
+    "storage_bucket": "hublyn-89050.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:406953201883:android:f29147940480464b76fcfe",
+        "android_client_info": {
+          "package_name": "dev.piyushgarg.hublyn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "406953201883-kjo432oa41lgv8u9873him3tb95rebpe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.piyushgarg.hublyn",
+            "certificate_hash": "a02f6ad0058dd4d7f7dada27286879f2ca38ceb2"
+          }
+        },
+        {
+          "client_id": "406953201883-nbk9sovjb9ql5rfcvmrv6d1v5e647nv3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpdDGGEiMorpYnCpZhd6SyZlWQYHhz6XA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "406953201883-nbk9sovjb9ql5rfcvmrv6d1v5e647nv3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
