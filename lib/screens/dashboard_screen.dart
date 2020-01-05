@@ -19,6 +19,26 @@ class _DashboardScreenState extends State<DashboardScreen> {
   String _photoUrl = '';
   String _uid = '';
 
+  Future<bool> _onWillPop() async {
+    return (await showDialog(
+      context: context,
+      builder: (context) => new AlertDialog(
+        title: new Text('Are you sure?'),
+        content: new Text('Do you want to exit'),
+        actions: <Widget>[
+          new FlatButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: new Text('No'),
+          ),
+          new FlatButton(
+            onPressed: () => Navigator.of(context).pop(true),
+            child: new Text('Yes'),
+          ),
+        ],
+      ),
+    )) ?? false;
+  }
+
 
   void getCurrentUser()async{
 
@@ -51,11 +71,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return WillPopScope(
+      onWillPop: (){},
+      child: Scaffold(
 //      TODO: Build Dashboard
-    body: Center(
-      child: Text('Hello $_displayName'),
-    ),
+      body: Center(
+        child: Text('Hello $_displayName'),
+      ),
+      ),
     );
   }
 }
