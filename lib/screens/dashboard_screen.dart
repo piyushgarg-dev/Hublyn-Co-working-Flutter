@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:hublyn/screens/login_screen.dart';
+import 'dashboard_screens/home_screen.dart';
+import 'dashboard_screens/chat_screen.dart';
+import 'dashboard_screens/setting_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   static final String id = 'dashboard_screen';
@@ -14,10 +17,18 @@ class _DashboardScreenState extends State<DashboardScreen> {
   final _auth = FirebaseAuth.instance;
   FirebaseUser _user;
 
+  int _selected_index = 0;
+
   String _email = '';
   String _displayName = '';
   String _photoUrl = '';
   String _uid = '';
+
+  List<Widget> screens = [
+    HomeScreen(),
+    ChatScreen(),
+    SettingScreen(),
+  ];
 
   Future<bool> _onWillPop() async {
     return (await showDialog(
@@ -73,11 +84,31 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: (){},
-      child: Scaffold(
-//      TODO: Build Dashboard
-      body: Center(
-        child: Text('Hello $_displayName'),
-      ),
+      child: MaterialApp(
+        home: Scaffold(
+          backgroundColor: Colors.white,
+          appBar: AppBar(
+            title: Text('Hublyn'),
+            backgroundColor: Colors.blue,
+          ),
+        bottomNavigationBar: CurvedNavigationBar(
+          backgroundColor: Colors.white,
+          color: Colors.blue,
+          items: <Widget>[
+            Icon(Icons.home, size: 30,color: Colors.white,),
+            Icon(Icons.chat, size: 30,color: Colors.white),
+            Icon(Icons.settings, size: 30,color: Colors.white),
+          ],
+          onTap: (index) {
+            //Handle button tap
+            setState(() {
+              _selected_index = index;
+            });
+          },
+        ),
+        body: screens[_selected_index],
+
+        ),
       ),
     );
   }
