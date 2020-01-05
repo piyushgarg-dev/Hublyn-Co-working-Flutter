@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../login_screen.dart';
 import 'components/home_cards.dart';
+import 'requirement_screen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -10,6 +13,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
+  final _firestore = Firestore.instance;
   final _auth = FirebaseAuth.instance;
   FirebaseUser _user;
 
@@ -48,21 +52,55 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     getCurrentUser();
 
+
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: ListView(
-          children: <Widget>[
-            HomeCard(userPic: _photoUrl,userName: _displayName,bannerUrl: 'https://i.ytimg.com/vi/8FHEHlTwdUM/maxresdefault.jpg',),
-            
-          ],
-        )
+        child: StreamBuilder(
+          stream: _firestore.collection('posts').snapshots(),
+        builder: (context,snapshot){
+
+          if(snapshot.hasData){
+            final posts = snapshot.data.documents;
+            List<Widget> postlist = [];
+               for(var post in posts){
+                 final postText = post.data['text'];
+                 final postEmail = post.data['email'];
+                 final postName = post.data['name'];
+                 final pic = post.data['pic'];
+
+                 postlist.add(
+                      HomeCard(
+                        caption: postText,
+                        userEmail: postEmail,
+                        userName: postName,
+                        userPic: pic,
+                  ),
+                 );
+
+
+               }
+               return ListView(
+                 children: postlist,
+               );
+          }
+          return Container(
+            child: Text('No Posts'),
+          );
+
+
+
+        }
+
+        ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){},
+        onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>RequirementScreen()));
+        },
         child: Icon(Icons.add),
       ),
     );
@@ -70,3 +108,35 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 
+//StreamBuilder(
+//stream: _firestore.collection('posts').snapshots(),
+//builder: (context,snapshot){
+//if(snapshot.hasData){
+//final posts = snapshot.data.documents;
+//List<Widget> postlist = [];
+//
+//for(var post in posts){
+//final postText = post.data['text'];
+//final postEmail = post.data['email'];
+//final postName = post.data['name'];
+//final pic = post.data['pic'];
+//
+//postlist.add(
+//HomeCard(
+//caption: postText,
+//userEmail: postEmail,
+//userName: postName,
+//userPic: pic,
+//)
+//);
+//
+//
+//}
+//
+//
+//return ListView(
+//children: postlist,
+//);
+//}
+//},
+//),

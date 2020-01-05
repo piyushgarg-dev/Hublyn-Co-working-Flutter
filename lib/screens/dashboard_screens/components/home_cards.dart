@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomeCard extends StatelessWidget {
 
@@ -6,8 +7,9 @@ class HomeCard extends StatelessWidget {
   final userName;
   final bannerUrl;
   final caption;
+  final userEmail;
 
-  HomeCard({this.userPic,this.userName,this.bannerUrl,this.caption});
+  HomeCard({this.userPic,this.userName,this.bannerUrl,this.caption,this.userEmail});
 
   @override
   Widget build(BuildContext context) {
@@ -34,15 +36,35 @@ class HomeCard extends StatelessWidget {
 
             ),
             caption!=null? Padding(
-              padding: const EdgeInsets.only(top:8.0,bottom: 10.0,left: 15.0),
+              padding: const EdgeInsets.only(top:8.0,bottom: 10.0,left: 15.0,right: 15.0),
               child: Container(
                 child: Text(caption,
                   textAlign: TextAlign.left,
-                  style: TextStyle(fontSize: 20.0,color: Colors.grey),
+                  style: TextStyle(fontSize: 20.0,color: Colors.blue,fontFamily: 'roboto'),
                 ),
               ),
             ):Container(),
-            bannerUrl!=null?Image(image: NetworkImage(bannerUrl),) : Container()
+            Padding(
+              padding: const EdgeInsets.only(left: 35.0,right: 35.0),
+              child: Divider(
+                thickness: 2.0,
+              ),
+            ),
+            FlatButton(
+              onPressed: (){
+                String url = 'mailto:$userEmail?subject=[ Hublyn ] In reply to your posted requirements&body=$caption\n';
+                launch(url);
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text('CONTACT'),
+                  SizedBox(width: 10.0,),
+                  Icon(Icons.email,color: Colors.blue,)
+                ],
+              ),
+            )
+
           ],
         ),
       ),
