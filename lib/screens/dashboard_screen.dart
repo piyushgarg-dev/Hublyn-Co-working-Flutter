@@ -85,6 +85,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return WillPopScope(
       onWillPop: (){},
       child: MaterialApp(
+
         home: Scaffold(
           backgroundColor: Colors.white,
           appBar: AppBar(

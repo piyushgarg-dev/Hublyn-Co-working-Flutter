@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../login_screen.dart';
+import 'components/home_cards.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -53,8 +54,19 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text('Hello $_displayName'),
+        child: ListView(
+          children: <Widget>[
+            HomeCard(userPic: _photoUrl,userName: _displayName,bannerUrl: 'https://i.ytimg.com/vi/8FHEHlTwdUM/maxresdefault.jpg',),
+            
+          ],
+        )
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){},
+        child: Icon(Icons.add),
       ),
     );
   }
 }
+
+
