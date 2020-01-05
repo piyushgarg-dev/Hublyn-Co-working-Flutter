@@ -58,4 +58,3 @@ class _LoadingScreenState extends State<LoadingScreen> {
   }
 }
 
-//TODO: Check if user is authenticated ? dashboard : signin
