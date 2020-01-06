@@ -8,8 +8,9 @@ class HomeCard extends StatelessWidget {
   final bannerUrl;
   final caption;
   final userEmail;
+  final time;
 
-  HomeCard({this.userPic,this.userName,this.bannerUrl,this.caption,this.userEmail});
+  HomeCard({this.time,this.userPic,this.userName,this.bannerUrl,this.caption,this.userEmail});
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +28,17 @@ class HomeCard extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text(userName!=null?userName:' ',
-                      style: TextStyle(fontSize: 20.0),
+                    child: Column(
+                      children: <Widget>[
+                        Text(userName!=null?userName:' ',
+                          style: TextStyle(fontSize: 20.0),
+                        ),
+                        SizedBox(height: 8.0,),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10.0),
+                          child: Text(time!=null?time:'',style: TextStyle(color: Colors.grey),),
+                        )
+                      ],
                     ),
                   )
                 ],

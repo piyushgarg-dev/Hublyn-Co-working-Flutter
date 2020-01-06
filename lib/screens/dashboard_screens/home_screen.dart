@@ -71,6 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
                  final postEmail = post.data['email'];
                  final postName = post.data['name'];
                  final pic = post.data['pic'];
+                 final time = post.data['time'];
 
                  postlist.add(
                       HomeCard(
@@ -78,6 +79,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         userEmail: postEmail,
                         userName: postName,
                         userPic: pic,
+                        time:time
+
                   ),
                  );
 

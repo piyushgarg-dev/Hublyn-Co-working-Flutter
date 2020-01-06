@@ -15,6 +15,10 @@ class _RequirementScreenState extends State<RequirementScreen> {
   final _auth = FirebaseAuth.instance;
   FirebaseUser _user;
 
+  List<String> month = [
+    'Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'
+  ];
+
 
 
   String _email = '';
@@ -74,11 +78,13 @@ class _RequirementScreenState extends State<RequirementScreen> {
               ),
               RaisedButton(
                 onPressed: ()async{
+                  final zone = DateTime.now().hour.toInt() < 12 ? 'AM':'PM';
                  final res = await _firestore.collection('posts').add({
                     'email':_email,
                     'text':userRequirement,
                     'name':_displayName,
-                    'pic':_photoUrl
+                    'pic':_photoUrl,
+                   'time':DateTime.now().hour.toString() + ':' + DateTime.now().minute.toString() + ' ' + zone +' - ' + DateTime.now().day.toString()+' '+ month[ DateTime.now().month] + ' '+DateTime.now().year.toString()
                   });
                  await Navigator.pop(context);
                 },
