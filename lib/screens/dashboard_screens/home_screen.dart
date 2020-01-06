@@ -60,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: Center(
         child: StreamBuilder(
-          stream: _firestore.collection('posts').snapshots(),
+          stream: _firestore.collection('posts').orderBy('timestamp',descending: true).snapshots(),
         builder: (context,snapshot){
 
           if(snapshot.hasData){

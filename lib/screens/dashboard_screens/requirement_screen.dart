@@ -84,6 +84,7 @@ class _RequirementScreenState extends State<RequirementScreen> {
                     'text':userRequirement,
                     'name':_displayName,
                     'pic':_photoUrl,
+                   'timestamp':DateTime.now(),
                    'time':DateTime.now().hour.toString() + ':' + DateTime.now().minute.toString() + ' ' + zone +' - ' + DateTime.now().day.toString()+' '+ month[ DateTime.now().month] + ' '+DateTime.now().year.toString()
                   });
                  await Navigator.pop(context);
