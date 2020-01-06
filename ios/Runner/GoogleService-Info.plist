@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>406953201883-2ve5onep233tl9f5a6r3p94noijo362e.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.406953201883-2ve5onep233tl9f5a6r3p94noijo362e</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>406953201883-kjo432oa41lgv8u9873him3tb95rebpe.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBRLQHEW-Ks6Uup6k7Owx-6KTYknG87LIc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>406953201883</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>dev.piyushgarg.hublyn</string>
+	<key>PROJECT_ID</key>
+	<string>hublyn-89050</string>
+	<key>STORAGE_BUCKET</key>
+	<string>hublyn-89050.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:406953201883:ios:47830b404a94786d76fcfe</string>
+	<key>DATABASE_URL</key>
+	<string>https://hublyn-89050.firebaseio.com</string>
+</dict>
+</plist>
